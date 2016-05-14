@@ -28,7 +28,7 @@ vagrant_synced_folder_default_type: nfs
 # If you need to run multiple instances of Drupal VM, set a unique hostname,
 # machine name, and IP address for each instance.
 vagrant_hostname: "{{ project_name }}.drupalvm"
-vagrant_machine_name: {{ project_name }}
+vagrant_machine_name: "{{ project_name }}"
 vagrant_ip: 192.168.88.88
 
 # Allow Drupal VM to be accessed via a public network interface on your host.
