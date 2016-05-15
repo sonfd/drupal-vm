@@ -4,10 +4,10 @@
 # ----------------------------------------------------------------------
 # ----------------------------------------------------------------------
 project_name: ""
-project_path: ""
+project_path: "~/workspace/projects/{{ project_name }}"
 
 site_name: "{{ project_name }}"
-site_url: ""
+site_url: "dev.{{ site_name }}"
 site_path: ""
 site_db: "{{ site_name }}"
 
