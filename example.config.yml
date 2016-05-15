@@ -8,7 +8,7 @@ project_path: "~/workspace/projects/{{ project_name }}"
 
 site_name: "{{ project_name }}"
 site_url: "dev.{{ site_name }}"
-site_path: ""
+site_path: "docroot"
 site_db: "{{ site_name }}"
 
 # SCRIPTS - Path relative to the `provisioning/playbook.yml` file.
