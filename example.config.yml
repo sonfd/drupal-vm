@@ -162,7 +162,7 @@ installed_extras:
   # - selenium
   # - solr
   - varnish
-  # - xdebug
+  - xdebug
   # - xhprof
 
 # Add any extra apt or yum packages you would like installed.
