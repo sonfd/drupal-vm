@@ -224,6 +224,7 @@ composer_home_group: "{{ drupalvm_user }}"
 
 # MySQL Configuration.
 mysql_root_password: root
+mysql_root_password_update: true
 mysql_slow_query_log_enabled: true
 mysql_slow_query_time: 2
 mysql_wait_timeout: 300
