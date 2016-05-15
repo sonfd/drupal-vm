@@ -1,21 +1,32 @@
 ---
-# ----------------------------------------------------------------------
+# -----------------
 # PROJECT INFO
-# --------------------
+# ----------------------------------------------------------------------
+# ----------------------------------------------------------------------
 project_name: ""
 project_path: ""
 
+site_name: "{{ project_name }}"
 site_url: ""
-site_db: ""
 site_path: ""
+site_db: "{{ site_name }}"
 
-# --------------------
 # SCRIPTS - Path relative to the `provisioning/playbook.yml` file.
-# --------------------
 pre_provision_scripts: []
 post_provision_scripts: []
 #  - "../scripts/import-db.sh {{ site_db }} import.{{ project_name }}.sql"
-# --------------------
+
+# PHP
+php_version: "5.6"
+php_memory_limit: "192M"
+
+# Memory and CPU to use for this VM.
+vagrant_memory: 1024
+vagrant_cpus: 2
+
+# The web server software to use. Can be either 'apache' or 'nginx'.
+drupalvm_webserver: apache
+# -----------------------------------------------------------------------
 # -----------------------------------------------------------------------
 
 
@@ -27,7 +38,7 @@ vagrant_synced_folder_default_type: nfs
 
 # If you need to run multiple instances of Drupal VM, set a unique hostname,
 # machine name, and IP address for each instance.
-vagrant_hostname: "{{ project_name }}.drupalvm"
+vagrant_hostname: "{{ project_name }}"
 vagrant_machine_name: "{{ project_name }}"
 vagrant_ip: 192.168.88.88
 
@@ -50,13 +61,6 @@ vagrant_synced_folders:
     type: nfs
     create: true
 
-
-# Memory and CPU to use for this VM.
-vagrant_memory: 1024
-vagrant_cpus: 2
-
-# The web server software to use. Can be either 'apache' or 'nginx'.
-drupalvm_webserver: apache
 
 # Set this to false if you are using a different site deployment strategy and
 # would like to configure 'vagrant_synced_folders' and 'apache_vhosts' manually.
@@ -196,8 +200,6 @@ firewall_log_dropped_packets: false
 
 # PHP Configuration. Currently-supported versions: 5.6, 7.0.
 # To use 5.6, see: http://docs.drupalvm.com/en/latest/other/php-56/
-php_version: "7.0"
-php_memory_limit: "192M"
 php_display_errors: "On"
 php_display_startup_errors: "On"
 php_realpath_cache_size: "1024K"
