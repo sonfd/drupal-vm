@@ -9,11 +9,15 @@ project_path: "~/workspace/projects/{{ project_name }}"
 site_name: "{{ project_name }}"
 site_url: "dev.{{ site_name }}"
 site_path: "docroot"
+# DB, user, pass
 site_db: "{{ site_name }}"
+# Drupal config path relative to {{ project_path }}
+config_path: "{{ site_path }}/../config"
 
 # SCRIPTS - Path relative to the `provisioning/playbook.yml` file.
 pre_provision_scripts: []
 post_provision_scripts: []
+#post_provision_scripts:
 #  - "../scripts/import-db.sh {{ site_db }} import.{{ project_name }}.sql"
 
 # PHP
@@ -54,6 +58,11 @@ vagrant_public_ip: ""
 vagrant_synced_folders:
   - local_path: "{{ project_path }}/db"
     destination: "/web/db"
+    type: nfs
+    create: true
+
+  - local_path: "{{ project_path }}/{{ config_path }}"
+    destination: "/web/config"
     type: nfs
     create: true
 
