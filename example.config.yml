@@ -4,21 +4,20 @@
 # ----------------------------------------------------------------------
 # ----------------------------------------------------------------------
 project_name: ""
-project_path: "~/workspace/projects/{{ project_name }}"
 
 site_name: "{{ project_name }}"
 site_url: "dev.{{ site_name }}"
 site_path: "docroot"
+
 # DB, user, pass
 site_db: "{{ site_name }}"
-# Drupal config path relative to {{ project_path }}
-config_path: "{{ site_path }}/../config"
+site_db_user: "{{ site_db }}"
+site_db_pass: "{{ site_db_user }}"
 
-# SCRIPTS - Path relative to the `provisioning/playbook.yml` file.
-pre_provision_scripts: []
-post_provision_scripts: []
-#post_provision_scripts:
-#  - "../scripts/import-db.sh {{ site_db }} import.{{ project_name }}.sql"
+# Drupal config path relative to {{ project_path }}
+config_path: "{{ project_path }}/config"
+db_backups_path: "{{ project_path }}/db"
+db_backup_file: "{{ project_name }}.sql.gz"
 
 # PHP
 php_version: "5.6"
@@ -30,6 +29,10 @@ vagrant_cpus: 2
 
 # The web server software to use. Can be either 'apache' or 'nginx'.
 drupalvm_webserver: apache
+
+# Path relative to the `provisioning/playbook.yml` file.
+pre_provision_scripts: []
+post_provision_scripts: []
 # -----------------------------------------------------------------------
 # -----------------------------------------------------------------------
 
@@ -56,12 +59,12 @@ vagrant_public_ip: ""
 # a 'type' of [nfs|rsync|smb] (leave empty for slow native shares). See
 # http://docs.drupalvm.com/en/latest/extras/syncing-folders/ for more info.
 vagrant_synced_folders:
-  - local_path: "{{ project_path }}/db"
+  - local_path: "{{ db_backups_path }}"
     destination: "/web/db"
     type: nfs
     create: true
 
-  - local_path: "{{ project_path }}/{{ config_path }}"
+  - local_path: "{{ config_path }}"
     destination: "/web/config"
     type: nfs
     create: true
@@ -157,10 +160,10 @@ mysql_databases:
     collation: utf8_general_ci
 
 mysql_users:
-  - name: "{{ site_db }}"
+  - name: "{{ site_db_user }}"
     host: "%"
-    password: "{{ site_db }}"
-    priv: "{{ site_db }}.*:ALL"
+    password: "{{ site_db_pass }}"
+    priv: "{{ site_db_user }}.{{ site_db }}:ALL"
 
 # Comment out any extra utilities you don't want to install. If you don't want
 # to install *any* extras, make set this value to an empty set, e.g. `[]`.

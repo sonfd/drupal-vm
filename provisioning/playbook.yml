@@ -5,12 +5,9 @@
   vars_files:
     - vars/main.yml
     - ../config.yml
+    - ../local.config.yml
 
   pre_tasks:
-    - include_vars: "{{ item }}"
-      with_fileglob:
-        - ../../local.config.yml
-
     - include: tasks/init-debian.yml
       when: ansible_os_family == 'Debian'
     - include: tasks/init-redhat.yml
@@ -84,6 +81,9 @@
     # Install site if configured.
     - include: tasks/install-site.yml
       when: install_site
+
+    - include: tasks/import-db.yml
+      when: side_db_import
 
     - include: tasks/drush-aliases.yml
     - include: tasks/cron.yml

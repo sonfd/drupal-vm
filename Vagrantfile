@@ -31,10 +31,11 @@ unless File.exist?("#{dir}/config.yml")
   raise 'Configuration file not found! Please copy example.config.yml to config.yml and try again.'
 end
 vconfig = YAML.load_file("#{dir}/config.yml")
-# Include a local.config.yml file if available.
-if File.exist?("#{dir}/local.config.yml")
-  vconfig.merge!(YAML.load_file("#{dir}/local.config.yml"))
+# Require local.config.yml
+unless File.exist?("#{dir}/local.config.yml")
+  raise 'Configuration file not found! Please copy example.local.config.yml to local.config.yml and try again.'
 end
+vconfig.merge!(YAML.load_file("#{dir}/local.config.yml"))
 
 # Replace jinja variables in config.
 vconfig = walk(vconfig) do |value|

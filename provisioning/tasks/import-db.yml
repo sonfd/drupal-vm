@@ -1,0 +1,14 @@
+---
+- name: Copy DB Backup
+  copy:
+    src: /web/db/{{ db_backup_file }}
+    dest: /web/db/drupalvm--import.sql.gz
+  when: /web/db/db_backup_file.exists
+
+- name: Unpack DB Backup
+  command: gzip -d /web/db/drupalvm--import.sql.gz
+  when: /web/db/{{ db_backup_file}}.exists
+
+- name: Import DB Backup
+  command: mysql -u {{ db_user_name }} -p{{ db_user_pass }} {{ site_db }} < /web/db/drupalvm--import.sql
+  when: /web/db/drupalvm--import.sql.exists

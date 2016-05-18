@@ -5,7 +5,7 @@
 .bundle/
 *.retry
 vagrant_ansible_inventory_default
-config.yml
+local.config.yml
 drupal.make.yml
 Vagrantfile.local
 examples/prod/inventory

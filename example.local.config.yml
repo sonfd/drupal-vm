@@ -1,0 +1,13 @@
+# -----------------
+# PROJECT INFO
+# ----------------------------------------------------------------------
+# ----------------------------------------------------------------------
+#site_name: ""
+site_url: "dev.{{ site_name }}"
+project_path: ""
+
+side_db_import: true
+# db_backup_file: "{{ site_name }}.sql.gz"
+
+# PHP
+# php_memory_limit: "192M"

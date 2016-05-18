@@ -1,0 +1,75 @@
+# ---------------------------------------------------------------------------- #
+# First Install Steps
+# - These will only need to be done the first time you use vagrant
+# ---------------------------------------------------------------------------- #
+
+1. Install Vagrant - https://www.vagrantup.com/downloads.html
+
+2. Install Ansible
+- In terminal run
+  sudo easy_install pip
+  sudo pip install ansible
+
+- Alternate ways to install ansible
+   http://docs.ansible.com/ansible/intro_installation.html
+
+3. Install Vagrant Host Updater
+- In terminal run
+  vagrant plugin install vagrant-hostsupdater
+
+4. Install Vagrant Auto network
+- In terminal run
+  vagrant plugin install vagrant-auto_network
+
+
+
+
+# ---------------------------------------------------------------------------- #
+# Per Site Install
+# - These steps will be needed for every instance of vagrant
+# ---------------------------------------------------------------------------- #
+
+1. Copy example.local.config.yml to local.config.yml
+- Set project_path. This is your local path to this project
+- Override site url if you'd like
+
+2. Start Vagrant!
+- From this directory in terminal run
+  vagrant up
+
+
+
+
+# ---------------------------------------------------------------------------- #
+# Useful Commands
+# ---------------------------------------------------------------------------- #
+
+- vagrant up (Install Windows / Power On)
+starts vagrant
+
+- vagrant halt (Shutdown / Power Off)
+saves machine state and powers down
+
+- vagrant reload (Restart)
+vagrant halt + vagrant up
+
+- vagrant provision (Update Windows?)
+Re-provisions vagrant and runs any post provision scripts.
+
+- vagrant destroy (Delete Windows)
+Destroys the machine. Probably don't want to run this unless you're machine is
+really jacked up
+
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
+
+
+
+
+# ---------------------------------------------------------------------------- #
+# Advanced
+# - Have some fun, live a little.
+# ---------------------------------------------------------------------------- #
+
+- Override any settings in config.yml in local.config.yml.
