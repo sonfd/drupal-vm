@@ -1,5 +1,5 @@
 {
     "name": "sonfd/drupal-vm",
     "type": "vm",
-    "description": "Fork of geerlingguy/drupal-vm"
+    "description": "Fork of geerlingguy/drupal-vm. Only diff is example.config.yml"
 }
