@@ -1,11 +1,14 @@
 {
-    "name": "geerlingguy/drupal-vm",
+    "name": "sonfd/drupal-vm",
     "type": "vm",
-    "description": "A VM for local Drupal development, built with Vagrant + Ansible",
+    "description": "Fork of geerlingguy/drupal-vm",
     "keywords": ["vagrant", "vm", "virtual machine", "drupal"],
     "homepage": "https://www.drupalvm.com",
     "license": "MIT",
     "authors": [
+        {
+            "name": "Me"
+        },
         {
             "name": "Jeff Geerling",
             "homepage": "http://www.jeffgeerling.com"
