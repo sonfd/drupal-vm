@@ -5,7 +5,7 @@ project_name: ""
 # If you need to run multiple instances of Drupal VM, set a unique hostname,
 # machine name, and IP address for each instance.
 vagrant_hostname: "dev.{{ project_name }}"
-vagrant_machine_name: "dev.{{ project_name }}"
+vagrant_machine_name: "{{ project_name }}"
 vagrant_ip: 0.0.0.0
 
 vagrant_synced_folders:
@@ -21,6 +21,11 @@ vagrant_synced_folders:
 
   - local_path: "../vendor"
     destination: "/var/www/vendor"
+    type: nfs
+    create: true
+
+  - local_path: "../scripts"
+    destination: "/var/www/scripts"
     type: nfs
     create: true
 
@@ -87,7 +92,7 @@ installed_extras:
   # - solr
   # - upload-progress
   - varnish
-  # - xdebug
+  - xdebug
   # - xhprof
 
 # PHP Configuration. Currently-supported versions: 5.6, 7.0, 7.1.
