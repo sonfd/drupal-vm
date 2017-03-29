@@ -9,26 +9,10 @@ vagrant_machine_name: "{{ project_name }}"
 vagrant_ip: 0.0.0.0
 
 vagrant_synced_folders:
-  - local_path: "../docroot"
-    destination: "/var/www/docroot"
+  - local_path: ".."
+    destination: "/var/www"
     type: nfs
     create: true
-
-  - local_path: "../db_snapshots"
-    destination: "/var/www/db_snapshots"
-    type: nfs
-    create: true
-
-  - local_path: "../vendor"
-    destination: "/var/www/vendor"
-    type: nfs
-    create: true
-
-  - local_path: "../scripts"
-    destination: "/var/www/scripts"
-    type: nfs
-    create: true
-
 # Set this to 'false' if you are using a different site deployment strategy and
 # would like to configure 'vagrant_synced_folders' and 'apache_vhosts' manually.
 build_makefile: false
