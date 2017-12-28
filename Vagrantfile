@@ -15,47 +15,9 @@ guest_config_dir = ENV['DRUPALVM_CONFIG_DIR'] ? "/vagrant/#{ENV['DRUPALVM_CONFIG
 
 drupalvm_env = ENV['DRUPALVM_ENV'] || 'vagrant'
 
-<<<<<<< HEAD
 default_config_file = "#{host_drupalvm_dir}/default.config.yml"
 unless File.exist?(default_config_file)
   raise_message "Configuration file not found! Expected in #{default_config_file}"
-=======
-# Cross-platform way of finding an executable in the $PATH.
-def which(cmd)
-  exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
-  ENV['PATH'].split(File::PATH_SEPARATOR).each do |path|
-    exts.each do |ext|
-      exe = File.join(path, "#{cmd}#{ext}")
-      return exe if File.executable?(exe) && !File.directory?(exe)
-    end
-  end
-  nil
-end
-
-def get_ansible_version(exe)
-  /^[^\s]+ (.+)$/.match(`#{exe} --version`) { |match| return match[1] }
-end
-
-def walk(obj, &fn)
-  if obj.is_a?(Array)
-    obj.map { |value| walk(value, &fn) }
-  elsif obj.is_a?(Hash)
-    obj.each_pair { |key, value| obj[key] = walk(value, &fn) }
-  else
-    obj = yield(obj)
-  end
-end
-
-require 'yaml'
-# Load default VM configurations.
-vconfig = YAML.load_file("#{host_drupalvm_dir}/default.config.yml")
-# Use optional config.yml and local.config.yml for configuration overrides.
-['config.yml', 'local.config.yml', "#{drupalvm_env}.config.yml"].each do |config_file|
-  if File.exist?("#{host_config_dir}/#{config_file}")
-    optional_config = YAML.load_file("#{host_config_dir}/#{config_file}")
-    vconfig.merge!(optional_config) if optional_config
-  end
->>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 end
 
 vconfig = load_config([
@@ -84,23 +46,6 @@ Vagrant.configure('2') do |config|
   # Set the name of the VM. See: http://stackoverflow.com/a/17864388/100134
   config.vm.define vconfig['vagrant_machine_name']
 
-<<<<<<< HEAD
-=======
-provisioner = ansible_bin && !vconfig['force_ansible_local'] ? :ansible : :ansible_local
-if provisioner == :ansible
-  playbook = "#{host_drupalvm_dir}/provisioning/playbook.yml"
-  config_dir = host_config_dir
-else
-  playbook = "#{guest_drupalvm_dir}/provisioning/playbook.yml"
-  config_dir = guest_config_dir
-end
-
-if provisioner == :ansible && ansible_version < ansible_version_min
-  raise Vagrant::Errors::VagrantError.new, "You must update Ansible to at least #{ansible_version_min} to use this version of Drupal VM."
-end
-
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
->>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
   # Networking configuration.
   config.vm.hostname = vconfig['vagrant_hostname']
   config.vm.network :private_network,
@@ -119,36 +64,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Vagrant box.
   config.vm.box = vconfig['vagrant_box']
 
-<<<<<<< HEAD
   # Display an introduction message after `vagrant up` and `vagrant provision`.
   config.vm.post_up_message = vconfig.fetch('vagrant_post_up_message', get_default_post_up_message(vconfig))
-=======
-  if vconfig.include?('vagrant_post_up_message')
-    config.vm.post_up_message = vconfig['vagrant_post_up_message']
-  else
-    config.vm.post_up_message = 'Your Drupal VM Vagrant box is ready to use!'\
-      "\n* Visit the dashboard for an overview of your site: http://dashboard.#{vconfig['vagrant_hostname']} (or http://#{vconfig['vagrant_ip']})"\
-      "\n* You can SSH into your machine with `vagrant ssh`."\
-      "\n* Find out more in the Drupal VM documentation at http://docs.drupalvm.com"
-  end
-
-  # If a hostsfile manager plugin is installed, add all server names as aliases.
-  aliases = []
-  if vconfig['drupalvm_webserver'] == 'apache'
-    vconfig['apache_vhosts'].each do |host|
-      aliases.push(host['servername'])
-      aliases.concat(host['serveralias'].split) if host['serveralias']
-    end
-  else
-    vconfig['nginx_hosts'].each do |host|
-      aliases.concat(host['server_name'].split)
-      aliases.concat(host['server_name_redirect'].split) if host['server_name_redirect']
-    end
-  end
-  aliases = aliases.uniq - [config.vm.hostname, vconfig['vagrant_ip']]
-  # Remove wildcard subdomains.
-  aliases.delete_if { |vhost| vhost.include?('*') }
->>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
   # If a hostsfile manager plugin is installed, add all server names as aliases.
   aliases = get_vhost_aliases(vconfig) - [config.vm.hostname]
@@ -171,12 +88,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Synced folders.
   vconfig['vagrant_synced_folders'].each do |synced_folder|
     options = {
-<<<<<<< HEAD
       type: synced_folder.fetch('type', vconfig['vagrant_synced_folder_default_type']),
-=======
-      type: synced_folder.include?('type') ? synced_folder['type'] : vconfig['vagrant_synced_folder_default_type'],
-      rsync__auto: 'true',
->>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
       rsync__exclude: synced_folder['excluded_paths'],
       rsync__args: ['--verbose', '--archive', '--delete', '-z', '--copy-links', '--chmod=ugo=rwX'],
       id: synced_folder['id'],
@@ -184,40 +96,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       mount_options: synced_folder.fetch('mount_options', []),
       nfs_udp: synced_folder.fetch('nfs_udp', false)
     }
-<<<<<<< HEAD
     synced_folder.fetch('options_override', {}).each do |key, value|
       options[key.to_sym] = value
-=======
-    if synced_folder.include?('options_override')
-      synced_folder['options_override'].each do |key, value|
-        options[key.to_sym] = value
-      end
->>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
     end
     config.vm.synced_folder synced_folder.fetch('local_path'), synced_folder.fetch('destination'), options
   end
 
-<<<<<<< HEAD
-=======
-  # Allow override of the default synced folder type.
-  config.vm.synced_folder host_project_dir, '/vagrant', type: vconfig['vagrant_synced_folder_default_type']
-
->>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
   config.vm.provision provisioner do |ansible|
     ansible.playbook = playbook
     ansible.extra_vars = {
       config_dir: config_dir,
       drupalvm_env: drupalvm_env
     }
-<<<<<<< HEAD
     ansible.raw_arguments = Shellwords.shellsplit(ENV['DRUPALVM_ANSIBLE_ARGS']) if ENV['DRUPALVM_ANSIBLE_ARGS']
     ansible.tags = ENV['DRUPALVM_ANSIBLE_TAGS']
     # Use pip to get the latest Ansible version when using ansible_local.
     provisioner == :ansible_local && ansible.install_mode = 'pip'
-=======
-    ansible.raw_arguments = ENV['DRUPALVM_ANSIBLE_ARGS']
-    ansible.tags = ENV['DRUPALVM_ANSIBLE_TAGS']
->>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
   end
 
   # VMware Fusion.
