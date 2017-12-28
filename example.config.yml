@@ -44,7 +44,7 @@ drupal_install_site: false
 # this variable is 'true'.
 configure_drush_aliases: true
 
-force_ansible_local: false
+force_ansible_local: true
 
 # Apache VirtualHosts. Add one for each site you are running inside the VM. For
 # multisite deployments, you can point multiple servernames at one documentroot.
