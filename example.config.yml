@@ -1,6 +1,15 @@
 ---
-
 project_name: ""
+
+# Memory and CPU to use for this VM.
+vagrant_memory: 1024
+vagrant_cpus: 1
+
+# Ensure vagrant plugins are installed.
+vagrant_plugins:
+  - name: vagrant-vbguest
+  - name: vagrant-hostsupdater
+  - name: vagrant-auto_network
 
 # If you need to run multiple instances of Drupal VM, set a unique hostname,
 # machine name, and IP address for each instance.
@@ -13,23 +22,20 @@ vagrant_synced_folders:
   - local_path: ".."
     destination: "/var/www"
     type: nfs
-    create: true
+    create: false
+
 # Set this to 'false' if you are using a different site deployment strategy and
 # would like to configure 'vagrant_synced_folders' and 'apache_vhosts' manually.
 drupal_build_makefile: false
-
 # Set 'build_makefile' to 'false' and this to 'true' if you are using a
 # composer based site deployment strategy.
 drupal_build_composer: false
-
 # Set this to 'true' and 'build_makefile', 'build_composer' to 'false' if you
 # are using Composer's create-project as a site deployment strategy.
 drupal_build_composer_project: false
-
 # Set this to 'false' if you don't need to install drupal (using the drupal_*
 # settings below), but instead copy down a database (e.g. using drush sql-sync).
 drupal_install_site: false
-
 # Drupal VM automatically creates a drush alias file in your ~/.drush folder if
 # this variable is 'true'.
 configure_drush_aliases: true
@@ -76,13 +82,13 @@ installed_extras:
   # - selenium
   # - solr
   # - upload-progress
-  - varnish
+  # - varnish
   - xdebug
   # - xhprof
 
 # PHP Configuration. Currently-supported versions: 5.6, 7.0, 7.1.
 # See version-specific notes: http://docs.drupalvm.com/en/latest/other/php/
-php_version: "7.0"
+php_version: "7.2"
 php_install_recommends: no
 php_memory_limit: "192M"
 php_display_errors: "On"
