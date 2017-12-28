@@ -2,9 +2,15 @@
 
 [![Build Status](https://travis-ci.org/geerlingguy/drupal-vm.svg?branch=master)](https://travis-ci.org/geerlingguy/drupal-vm) [![Documentation Status](https://readthedocs.org/projects/drupal-vm/badge/?version=latest)](http://docs.drupalvm.com) [![Packagist](https://img.shields.io/packagist/v/geerlingguy/drupal-vm.svg)](https://packagist.org/packages/geerlingguy/drupal-vm) [![Docker Automated build](https://img.shields.io/docker/automated/geerlingguy/drupal-vm.svg?maxAge=2592000)](https://hub.docker.com/r/geerlingguy/drupal-vm/) [![](https://images.microbadger.com/badges/image/geerlingguy/drupal-vm.svg)](https://microbadger.com/images/geerlingguy/drupal-vm "Get your own image badge on microbadger.com") [![irc://irc.freenode.net/drupal-vm](https://img.shields.io/badge/irc.freenode.net-%23drupal--vm-brightgreen.svg)](https://riot.im/app/#/room/#drupal-vm:matrix.org)
 
+<<<<<<< HEAD
 [Drupal VM](https://www.drupalvm.com/) is A VM for Drupal, built with Ansible.
 
 Drupal VM makes building Drupal development environments quick and easy, and introduces developers to the wonderful world of Drupal development on virtual machines or Docker containers (instead of crufty old MAMP/WAMP-based development).
+=======
+[Drupal VM](https://www.drupalvm.com/) is A VM for Drupal development, built with Vagrant + Ansible.
+
+Drupal VM makes building local Drupal development environments quick and easy, and introduces developers to the wonderful world of Drupal development on local virtual machines (instead of crufty old MAMP/WAMP-based development).
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
 It will install the following on an Ubuntu 16.04 (by default) linux VM:
 

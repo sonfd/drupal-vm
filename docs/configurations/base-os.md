@@ -2,12 +2,11 @@ Drupal VM's configuration is designed to work with RedHat and Debian-compatible 
 
 Currently-supported OSes are:
 
-  - Ubuntu 16.04 'Xenial' (default)
-  - Ubuntu 14.04 'Precise'
+  - Ubuntu 16.04 (default)
+  - Ubuntu 14.04
+  - Ubuntu 12.04
   - RedHat Enterprise Linux / CentOS 7
-  - RedHat Enterprise Linux / CentOS 6 (limited support)
-  - Debian 9 'Stretch'
-  - Debian 8 'Jessie'
+  - RedHat Enterprise Linux / CentOS 6
 
 For certain OSes, there are a couple other caveats and tweaks you may need to perform to get things running smoothly—the main features and latest development is only guaranteed to work with the default OS as configured in `default.config.yml`.
 
@@ -20,6 +19,10 @@ Everything should work out of the box with Ubuntu 16.04.
 ## Ubuntu 14.04 Trusty LTS
 
 Everything should work out of the box with Ubuntu 14.04.
+
+## Ubuntu 12.04 Precise LTS
+
+Everything should work out of the box with Ubuntu 12.04.
 
 ## RedHat Enterprise Linux / CentOS 7
 
@@ -40,11 +43,3 @@ php_opcache_enabled_in_ini: false
 ```yaml
 firewall_disable_firewalld: false
 ```
-
-## Debian 9 Stretch
-
-Everything should work out of the box with Debian 9.
-
-## Debian 8 Jessie
-
-Everything should work out of the box with Debian 8.

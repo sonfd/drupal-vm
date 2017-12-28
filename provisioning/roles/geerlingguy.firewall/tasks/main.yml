@@ -33,6 +33,7 @@
     group: root
     mode: 0644
   when: "ansible_service_mgr == 'systemd'"
+<<<<<<< HEAD
 
 - name: Configure the firewall service.
   service:
@@ -40,5 +41,11 @@
     state: "{{ firewall_state }}"
     enabled: "{{ firewall_enabled_at_boot }}"
 
+=======
+
+- name: Ensure the firewall is enabled and will start on boot.
+  service: name=firewall state=started enabled=yes
+
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 - include: disable-other-firewalls.yml
   when: firewall_disable_firewalld or firewall_disable_ufw

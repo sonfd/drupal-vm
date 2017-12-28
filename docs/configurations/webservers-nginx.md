@@ -1,6 +1,10 @@
 To use Nginx instead of Apache, change the `drupalvm_webserver` variable inside your customized `config.yml`, from `apache` to `nginx`.
 
+<<<<<<< HEAD
 Because Nginx server directives behave a little differently than Apache's VirtualHosts, Drupal VM includes a custom Drupal-optimized Nginx server block configuration, and you can control all the servers ('virtual hosts') Nginx will run using the `nginx_vhosts` configuration. A few simple examples are shown in `default.config.yml`, but you have some extra flexibility if you need it. See the `nginx-vhost.conf.j2` template for more information.
+=======
+Because Nginx server directives behave a little differently than Apache's VirtualHosts, Drupal VM includes a custom Drupal-optimized Nginx server block configuration, and you can control all the servers ('virtual hosts') Nginx will run using the `nginx_hosts` configuration. A few simple examples are shown in `default.config.yml`, but you have some extra flexibility if you need it. See the `nginx-vhost.conf.j2` template for more information.
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
 Also, see the examples included in the [`geerlingguy.nginx` Ansible role's README](https://github.com/geerlingguy/ansible-role-nginx#readme) for more info, as well as many other variables you can override to configure Nginx exactly how you like it.
 
@@ -10,7 +14,11 @@ _Note: if you're using php-fpm, you may want to reflect your use of nginx by set
 
 To enable SSL support for you virtual hosts you first need a certificate file. See the same section under the [Apache documentation](webservers-apache.md#enable-ssl-support-with-apache) for how to generate a self-signed certficiate.
 
+<<<<<<< HEAD
 Modify your nginx host configuration by adding the following `extra_parameters` to the first entry in `nginx_vhosts`:
+=======
+Modify your nginx host configuration by adding the following `extra_parameters` to the first entry in `nginx_hosts`:
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
 ```yaml
 - server_name: "{{ drupal_domain }} www.{{ drupal_domain }}"
@@ -39,6 +47,7 @@ If you are using Ubuntu as your base OS and you want to get started quickly with
         ssl_protocols       TLSv1.1 TLSv1.2;
         ssl_ciphers         HIGH:!aNULL:!MD5;
 ```
+<<<<<<< HEAD
 
 ## Customizing server block configuration
 
@@ -79,3 +88,5 @@ location ~* \.(txt|log)$ {
 }
 {% endblock %}
 ```
+=======
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343

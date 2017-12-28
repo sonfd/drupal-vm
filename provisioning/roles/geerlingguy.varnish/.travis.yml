@@ -6,6 +6,7 @@ env:
   - distro: centos6
   - distro: ubuntu1604
   - distro: ubuntu1404
+<<<<<<< HEAD
   - distro: debian9
   - distro: debian8
 
@@ -16,6 +17,9 @@ env:
   - distro: ubuntu1604
     varnish_version: "4.1"
     playbook: test-41.yml
+=======
+  - distro: debian8
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
 script:
   # Configure test script so we can run extra tests after playbook is run.
@@ -31,6 +35,7 @@ script:
 
   # Make sure Varnish is running.
   - 'docker exec --tty ${container_id} env TERM=xterm varnishd -V'
+<<<<<<< HEAD
 
   # Test the version of Varnish installed (default to the main.yml default).
   - |
@@ -39,6 +44,8 @@ script:
 
   # Test port 80.
   - 'docker exec --tty ${container_id} env TERM=xterm curl -sI localhost:80 | grep -q "Via: .* varnish"'
+=======
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

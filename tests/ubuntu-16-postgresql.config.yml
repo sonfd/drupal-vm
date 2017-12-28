@@ -1,4 +1,7 @@
 ---
 drupal_db_backend: pgsql
+<<<<<<< HEAD
 php_sendmail_path: "/usr/sbin/sendmail -t -i"
+=======
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 installed_extras: []

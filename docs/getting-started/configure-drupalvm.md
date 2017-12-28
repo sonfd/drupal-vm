@@ -20,6 +20,7 @@ vagrant_machine_name: my_custom_site
 php_version: "5.6"
 ```
 
+<<<<<<< HEAD
 #### 3. vagrant.config.yml
 
 Environment specific overrides. When you run Drupal VM through _Vagrant_, the environment will be set to `vagrant` and this file is loaded when available. If you're doing something more advanced, such as running Drupal VM on a [production environment](../other/production.md), you can use a different environment configuration file, eg `prod.config.yml`.
@@ -27,6 +28,9 @@ Environment specific overrides. When you run Drupal VM through _Vagrant_, the en
 _Note: In addition to the variables listed in `default.config.yml`, you can also override the variables set by any of the ansible roles. In the "Installed extras" section of this documentation, each role has a link to the available variables._
 
 #### 4. local.config.yml
+=======
+#### 3. local.config.yml
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
 Local development overrides. Commonly this file is ignored from VCS so that each team member can make local customizations.
 
@@ -43,6 +47,15 @@ vagrant_synced_folders:
     create: true
 ```
 
+<<<<<<< HEAD
+=======
+### 4. vagrant.config.yml
+
+Environment specific overrides. When you run Drupal VM through _Vagrant_, the environment will be set to `vagrant` and this file is loaded when available. If you're doing something more advanced, such as running Drupal VM on a [production environment](../other/production.md), you can use a different environment configuration file, eg `prod.config.yml`.
+
+_Note: In addition to the variables listed in `default.config.yml`, you can also override the variables set by any of the ansible roles. In the "Installed extras" section of this documentation, each role has a link to the available variables._
+
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 ## Additional resources
 
 - Jeff Geerling's DrupalDC talk "[Drupal VM Tips and Tricks for Drupal 8 development](https://www.youtube.com/watch?v=_wV6MDsT42Y)"

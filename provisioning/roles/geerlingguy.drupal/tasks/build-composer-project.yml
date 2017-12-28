@@ -1,20 +1,4 @@
 ---
-- name: Delete old /tmp/composer-project
-  file:
-    path: "/tmp/composer-project"
-    state: absent
-  when: not drupal_site_exists
-
-- name: Generate Drupal project with composer package in /tmp/composer-project (this may take a while).
-  command: >
-    {{ composer_path }} create-project
-    {{ drupal_composer_project_package }} /tmp/composer-project
-    {{ drupal_composer_project_options|default('--prefer-dist --no-interaction') }}
-  when: not drupal_site_exists
-  become: no
-  environment:
-      COMPOSER_PROCESS_TIMEOUT: 1200
-
 - name: Ensure drupal_composer_install_dir directory has proper permissions.
   file:
     path: "{{ drupal_composer_install_dir }}"
@@ -25,14 +9,17 @@
   when: not drupal_site_exists
   failed_when: false
 
-- name: Move Drupal project files to drupal_composer_install_dir (this may take a while).
+- name: Generate Drupal project with composer package.
   command: >
-    cp -r /tmp/composer-project/. {{ drupal_composer_install_dir }}/
-    creates={{ drupal_core_path }}/index.php
-  become: no
+    {{ composer_path }} create-project
+    {{ drupal_composer_project_package }} {{ drupal_composer_install_dir }}
+    {{ drupal_composer_project_options|default('--prefer-dist --no-interaction') }}
   when: not drupal_site_exists
+  become: no
+  environment:
+      COMPOSER_PROCESS_TIMEOUT: 1200
 
-- name: Install dependencies with composer require (this may take a while).
+- name: Install dependencies with composer require.
   composer:
     command: require
     arguments: "{{ item }}"

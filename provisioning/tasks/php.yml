@@ -5,9 +5,22 @@
   when: drupalvm_webserver == 'nginx'
   tags: ['webserver', 'database', 'php']
 
+<<<<<<< HEAD
+=======
+- name: Set the correct XHProf package when PHP 5.6 is used.
+  set_fact:
+    xhprof_download_url: https://github.com/phacility/xhprof/archive/master.tar.gz
+    xhprof_download_folder_name: xhprof-master
+  when: php_version == '5.6'
+
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 - name: Ensure PHP version -specific workspace directory exists.
   file:
     path: "/root/php{{ php_version }}"
     state: directory
     mode: 0775
+<<<<<<< HEAD
   tags: ['php', 'xdebug']
+=======
+  tags: ['php']
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343

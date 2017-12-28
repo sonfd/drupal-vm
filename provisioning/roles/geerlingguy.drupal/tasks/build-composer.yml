@@ -21,14 +21,22 @@
   when: drupal_composer_path and not drupal_site_exists
   become: no
 
+<<<<<<< HEAD:provisioning/roles/geerlingguy.drupal/tasks/build-composer.yml
 - name: Run composer install (this may take a while).
+=======
+- name: Run composer install.
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343:provisioning/roles/geerlingguy.drupal/tasks/build-composer.yml
   composer:
     command: install
     working_dir: "{{ drupal_composer_install_dir }}"
   when: not drupal_site_exists
   become: no
 
+<<<<<<< HEAD:provisioning/roles/geerlingguy.drupal/tasks/build-composer.yml
 - name: Install dependencies with composer require (this may take a while).
+=======
+- name: Install dependencies with composer require.
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343:provisioning/roles/geerlingguy.drupal/tasks/build-composer.yml
   composer:
     command: require
     arguments: "{{ item }}"

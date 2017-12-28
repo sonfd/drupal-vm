@@ -1,5 +1,6 @@
 # Drupal VM Changelog
 
+<<<<<<< HEAD
 ## 4.7.0 "Water, Music, and Tronaction" (2017-10-06)
 
 ### Breaking Changes
@@ -139,6 +140,8 @@
   * #1347: Fix LoadError message on vagrant up/down.
 
 
+=======
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 ## 4.4.5 (2017-04-24)
 
 ### New/changed variables in default.config.yml

@@ -13,7 +13,11 @@ $aliases['{{ host }}'] = array(
   'root' => '{{ root }}',
   'remote-host' => '{{ host }}',
   'remote-user' => '{{ vagrant_user }}',
+<<<<<<< HEAD
   'ssh-options' => '-o "SendEnv PHP_IDE_CONFIG PHP_OPTIONS XDEBUG_CONFIG" -o PasswordAuthentication=no -i "' . (getenv('VAGRANT_HOME') ?: drush_server_home() . '/.vagrant.d') . '/insecure_private_key"',
+=======
+  'ssh-options' => '-o PasswordAuthentication=no -i "' . (getenv('VAGRANT_HOME') ?: drush_server_home() . '/.vagrant.d') . '/insecure_private_key"',
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
   'path-aliases' => array(
     '%drush-script' => '{{ drush_path }}',
   ),

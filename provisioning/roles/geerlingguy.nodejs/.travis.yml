@@ -7,6 +7,7 @@ env:
   - distro: centos6
   - distro: ubuntu1604
   - distro: ubuntu1404
+<<<<<<< HEAD
   - distro: debian9
   - distro: debian8
 
@@ -15,16 +16,27 @@ env:
     playbook: test-latest.yml
   - distro: ubuntu1604
     playbook: test-latest.yml
+=======
+  - distro: ubuntu1204
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
 script:
   # Configure test script so we can run extra tests after playbook is run.
   - export container_id=$(date +%s)
   - export cleanup=false
+<<<<<<< HEAD
 
   # Download test shim.
   - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/geerlingguy/73ef1e5ee45d8694570f334be385e181/raw/
   - chmod +x ${PWD}/tests/test.sh
 
+=======
+
+  # Download test shim.
+  - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/geerlingguy/73ef1e5ee45d8694570f334be385e181/raw/
+  - chmod +x ${PWD}/tests/test.sh
+
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
   # Run tests.
   - ${PWD}/tests/test.sh
 

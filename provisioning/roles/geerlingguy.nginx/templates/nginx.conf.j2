@@ -41,6 +41,11 @@ http {
     keepalive_requests {{ nginx_keepalive_requests }};
 
     server_tokens {{ nginx_server_tokens }};
+<<<<<<< HEAD
+=======
+    #gzip  on;
+
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 {% if nginx_proxy_cache_path %}
     proxy_cache_path {{ nginx_proxy_cache_path }};
 {% endif %}

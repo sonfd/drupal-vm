@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 # Available `vagrant_box` values include:
 #   - geerlingguy/centos7
 #   - geerlingguy/centos6
@@ -6,6 +7,10 @@
 #   - geerlingguy/debian8
 #   - geerlingguy/ubuntu1604
 #   - geerlingguy/ubuntu1404
+=======
+# `vagrant_box` can also be set to geerlingguy/centos6, geerlingguy/centos7,
+# geerlingguy/debian8, geerlingguy/ubuntu1404, geerlingguy/ubuntu1204, etc.
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 vagrant_box: geerlingguy/ubuntu1604
 
 vagrant_user: vagrant
@@ -235,7 +240,11 @@ extra_packages:
 # You can configure almost anything else on the server in the rest of this file.
 drush_version: "8.1.14"
 
+<<<<<<< HEAD
 extra_security_enabled: false
+=======
+drush_version: "8.1.10"
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
 firewall_enabled: true
 firewall_allowed_tcp_ports:
@@ -254,7 +263,11 @@ firewall_log_dropped_packets: false
 firewall_disable_firewalld: true
 firewall_disable_ufw: true
 
+<<<<<<< HEAD
 # PHP Configuration. Currently-supported versions: 5.6, 7.0, 7.1, 7.2.
+=======
+# PHP Configuration. Currently-supported versions: 5.6, 7.0, 7.1.
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 # See version-specific notes: http://docs.drupalvm.com/en/latest/configurations/php/
 php_version: "7.1"
 php_install_recommends: no
@@ -343,6 +356,9 @@ docker_image_path: ~/Downloads
 # Other configuration.
 dashboard_install_dir: /var/www/dashboard
 known_hosts_path: ~/.ssh/known_hosts
+<<<<<<< HEAD
 hostname_configure: true
 hostname_fqdn: "{{ vagrant_hostname }}"
+=======
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 ssh_home: "{{ drupal_core_path }}"

@@ -79,6 +79,7 @@ Add extra include file paths to this list to include more/localized Redis config
 
 The redis package name for installation via the system package manager. Defaults to `redis-server` on Debian and `redis` on RHEL.
 
+<<<<<<< HEAD
     redis_package_name: "redis-server"
 
 (Default for RHEL shown) The redis package name for installation via the system package manager. Defaults to `redis-server` on Debian and `redis` on RHEL.
@@ -99,6 +100,9 @@ For extra security, you can disable certain Redis commands (this is especially i
       - DEL
       - CONFIG
       - SHUTDOWN
+=======
+    redis_package_name: "redis28u"
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
 ## Dependencies
 
@@ -116,4 +120,8 @@ MIT / BSD
 
 ## Author Information
 
+<<<<<<< HEAD
 This role was created in 2014 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
+=======
+This role was created in 2014 by [Jeff Geerling](http://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343

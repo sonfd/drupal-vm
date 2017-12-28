@@ -5,14 +5,37 @@ env:
   - distro: centos7
   - distro: centos6
   - distro: ubuntu1604
+<<<<<<< HEAD
   - distro: debian8
+=======
+    init: /lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - distro: debian8
+    init: /lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
   - distro: ubuntu1404
   - distro: ubuntu1204
 
 script:
+<<<<<<< HEAD
   # Download test shim.
   - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/geerlingguy/73ef1e5ee45d8694570f334be385e181/raw/
   - chmod +x ${PWD}/tests/test.sh
+=======
+  - container_id=$(mktemp)
+  # Run container in detached state.
+  - 'sudo docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro ${run_opts} geerlingguy/docker-${distro}-ansible:latest "${init}" > "${container_id}"'
+
+  # Install dependencies.
+  - 'sudo docker exec "$(cat ${container_id})" ansible-galaxy install -r /etc/ansible/roles/role_under_test/tests/requirements.yml'
+
+  # Ansible syntax check.
+  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml --syntax-check'
+
+  # Test role.
+  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml'
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
   # Run tests.
   - ${PWD}/tests/test.sh

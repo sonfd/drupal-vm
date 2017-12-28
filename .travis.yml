@@ -20,6 +20,7 @@ env:
     # Defaults - Ubuntu 16.04.
     - type: defaults
       distro: ubuntu1604
+<<<<<<< HEAD
     # Defaults - Ubuntu 14.04.
     - type: defaults
       distro: ubuntu1404
@@ -33,6 +34,15 @@ env:
     - type: debian
       distro: debian8
 
+=======
+      init: /sbin/init
+      run_opts: "--privileged"
+    # Defaults - Ubuntu 14.04.
+    - type: defaults
+      distro: ubuntu1404
+      init: /sbin/init
+      run_opts: "--privileged"
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
     # PHP 5.6 - Ubuntu 16.04.
     - type: defaults
       distro: ubuntu1604
@@ -53,6 +63,19 @@ env:
       config_dir: /var/www/drupalvm/config
       DRUSH_BIN: "${DRUPALVM_DIR}/drupal/vendor/drush/drush/drush"
       TEST_INSTALLED_EXTRAS: false
+<<<<<<< HEAD
+=======
+    # Defaults - CentOS 7.
+    - type: centos
+      distro: centos7
+      init: /usr/lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    # Defaults - Debian 8.
+    - type: debian
+      distro: debian8
+      init: /lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
 before_install:
   # Pull container.
@@ -63,7 +86,70 @@ before_install:
 
 script:
   # Vagrantfile syntax check.
+<<<<<<< HEAD
   - 'rubocop ./Vagrantfile ./lib/drupalvm --except LineLength,Eval,MutableConstant,BlockLength,MethodLength,ConditionalAssignment,IndentArray,AlignParameters'
+=======
+  - 'rubocop ./Vagrantfile --except LineLength,Eval,MutableConstant,BlockLength'
+
+  # Ansible syntax check.
+  - 'docker exec --tty ${container_id} env TERM=xterm ansible-playbook ${DRUPALVM_DIR}/provisioning/playbook.yml --syntax-check'
+
+  # Run the test setup playbook with ansible-playbook.
+  - 'docker exec --tty ${container_id} env TERM=xterm ansible-playbook ${DRUPALVM_DIR}/tests/test-setup.yml'
+
+  # Run the playbook with ansible-playbook.
+  - >
+    if [ ! -z "${config_dir}" ]; then
+      docker exec ${container_id} env TERM=xterm DRUPALVM_ENV=${DRUPALVM_ENV} ansible-playbook ${DRUPALVM_DIR}/provisioning/playbook.yml --extra-vars="config_dir=${config_dir}";
+    else
+      docker exec ${container_id} env TERM=xterm DRUPALVM_ENV=${DRUPALVM_ENV} ansible-playbook ${DRUPALVM_DIR}/provisioning/playbook.yml;
+    fi
+
+  # Run integration tests.
+  - >
+    docker exec ${container_id} curl -s --header Host:${HOSTNAME} localhost
+    | grep -q '<title>Welcome to Drupal'
+    && (echo 'Drupal install pass' && exit 0)
+    || (echo 'Drupal install fail' && exit 1)
+
+  - >
+    if [ $TEST_INSTALLED_EXTRAS = true ]; then
+      docker exec ${container_id} curl -s --header Host:adminer.${HOSTNAME} localhost \
+      | grep -q '<title>Login - Adminer' \
+      && (echo 'Adminer install pass' && exit 0) \
+      || (echo 'Adminer install fail' && exit 1)
+    fi
+
+  - >
+    if [ $TEST_INSTALLED_EXTRAS = true ]; then
+      docker exec ${container_id} curl -s --header Host:pimpmylog.${HOSTNAME} localhost \
+      | grep -q '<title>Pimp my Log' \
+      && (echo 'Pimp my Log install pass' && exit 0) \
+      || (echo 'Pimp my Log install fail' && exit 1)
+    fi
+
+  - >
+    if [ $TEST_INSTALLED_EXTRAS = true ]; then
+      docker exec ${container_id} curl -s localhost:8025 \
+      | grep -q '<title>MailHog' \
+      && (echo 'MailHog install pass' && exit 0) \
+      || (echo 'MailHog install fail' && exit 1)
+    fi
+
+  - >
+    if [ $TEST_INSTALLED_EXTRAS = true ]; then
+      docker exec ${container_id} curl -sI --header Host:${HOSTNAME} localhost:81 \
+      | grep -q 'Via: .* varnish' \
+      && (echo 'Varnish install pass' && exit 0) \
+      || (echo 'Varnish install fail' && exit 1)
+    fi
+
+  - >
+    docker exec ${container_id} curl -s --header Host:${IP} localhost
+    | grep -q "<li>${IP} ${HOSTNAME}</li>"
+    && (echo 'Dashboard install pass' && exit 0)
+    || (echo 'Dashboard install fail' && exit 1)
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
   # Run tests.
   - composer run-tests

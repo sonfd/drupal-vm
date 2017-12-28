@@ -48,14 +48,22 @@ server {
     }
     {% endblock %}
 
+<<<<<<< HEAD
     {% block location_drupal_legacy -%}
     {% if drupal_major_version == 8 -%}
+=======
+{% if drupal_major_version == 8 %}
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
     # Redirect common PHP files to their new locations.
     location ~ ^((?!.*(?:core)).*)/(install.php|rebuild.php) {
          return 301 $scheme://$host$1/core/$2$is_args$args;
     }
+<<<<<<< HEAD
     {% endif %}
     {% endblock %}
+=======
+{% endif %}
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
     {% block location_php -%}
     # Use fastcgi for all php files.

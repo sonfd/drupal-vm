@@ -7,7 +7,10 @@ drupal_deploy_version: master
 drupal_deploy_update: true
 drupal_deploy_dir: "/var/www/drupal"
 drupal_deploy_accept_hostkey: no
+<<<<<<< HEAD
 drupal_deploy_composer_install: yes
+=======
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
 # Set this to 'true' and 'drupal_build_composer*' to 'false' if you would like
 # to build a Drupal make file with Drush.
@@ -47,7 +50,10 @@ drupal_install_site: true
 drupal_domain: "drupaltest.dev"
 drupal_site_name: "Drupal"
 drupal_install_profile: standard
+<<<<<<< HEAD
 drupal_site_install_extra_args: []
+=======
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 drupal_enable_modules: []
 drupal_account_name: admin
 drupal_account_pass: admin

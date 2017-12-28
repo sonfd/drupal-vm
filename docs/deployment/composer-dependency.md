@@ -41,6 +41,15 @@ drupal_core_path: "{{ drupal_composer_install_dir }}/docroot"
 
 If you intened to use the devel module, it must be added as a requirement to your `composer.json` file. Alternatively, if you do not intend to use it remove it from `drupal_enabled_modules` in your `config.yml` file:
 
+<<<<<<< HEAD:docs/deployment/composer-dependency.md
+=======
+```yaml
+drupal_enabled_modules: []
+```
+
+If you're using `pre_provision_scripts` or `post_provision_scripts` you also need to adjust their paths to take into account the new directory structure. The examples used in `default.config.yml` assume the files are located in the Drupal VM directory. You can use the `config_dir` variable which is the absolute path of the directory where your `config.yml` is located.
+
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343:docs/deployment/composer-dependency.md
 ```yaml
 drupal_enabled_modules: []
 ```

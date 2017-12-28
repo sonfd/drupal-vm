@@ -1,14 +1,24 @@
 ---
 - src: arknoll.selenium
+<<<<<<< HEAD
   version: 2.2.1
+=======
+  version: 2.2.0
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 - src: thom8.php-upload-progress
   version: 1.0.1
 - src: franklinkim.newrelic
   version: 1.6.0
 - src: geerlingguy.adminer
+<<<<<<< HEAD
   version: 1.2.0
 - src: geerlingguy.apache
   version: 2.1.1
+=======
+  version: 1.1.1
+- src: geerlingguy.apache
+  version: 2.1.0
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 - src: geerlingguy.apache-php-fpm
   version: 1.0.2
 - src: geerlingguy.blackfire
@@ -16,9 +26,15 @@
 - src: geerlingguy.composer
   version: 1.6.1
 - src: geerlingguy.daemonize
+<<<<<<< HEAD
   version: 1.2.0
 - src: geerlingguy.drupal
   version: 2.4.0
+=======
+  version: 1.1.1
+- src: geerlingguy.drupal
+  version: 2.2.1
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 - src: geerlingguy.drupal-console
   version: 1.1.0
 - src: geerlingguy.drush
@@ -26,7 +42,11 @@
 - src: geerlingguy.elasticsearch
   version: 2.1.3
 - src: geerlingguy.firewall
+<<<<<<< HEAD
   version: 2.3.0
+=======
+  version: 2.2.0
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 - src: geerlingguy.git
   version: 1.3.0
 - src: geerlingguy.java
@@ -36,6 +56,7 @@
 - src: geerlingguy.memcached
   version: 1.0.7
 - src: geerlingguy.mysql
+<<<<<<< HEAD
   version: 2.8.0
 - src: geerlingguy.nginx
   version: 2.4.0
@@ -43,6 +64,15 @@
   version: 4.1.2
 - src: geerlingguy.php
   version: 3.5.0
+=======
+  version: 2.7.2
+- src: geerlingguy.nginx
+  version: 2.0.0
+- src: geerlingguy.nodejs
+  version: 4.1.0
+- src: geerlingguy.php
+  version: 3.4.4
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 - src: geerlingguy.php-memcached
   version: 2.0.0
 - src: geerlingguy.php-mysql
@@ -55,8 +85,11 @@
   version: 3.1.0
 - src: geerlingguy.php-tideways
   version: 1.1.0
+<<<<<<< HEAD
 - src: geerlingguy.php-versions
   version: 2.0.0
+=======
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 - src: geerlingguy.php-xdebug
   version: 2.3.1
 - src: geerlingguy.php-xhprof
@@ -66,6 +99,7 @@
 - src: geerlingguy.postfix
   version: 1.1.0
 - src: geerlingguy.postgresql
+<<<<<<< HEAD
   version: 1.3.1
 - src: geerlingguy.redis
   version: 1.5.1
@@ -73,9 +107,22 @@
   version: 1.2.0
 - src: geerlingguy.ruby
   version: 2.4.3
+=======
+  version: 1.0.3
+- src: geerlingguy.redis
+  version: 1.4.1
+- src: geerlingguy.repo-remi
+  version: 1.2.0
+- src: geerlingguy.ruby
+  version: 2.4.2
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 - src: geerlingguy.security
   version: 1.5.0
 - src: geerlingguy.solr
   version: 3.5.5
 - src: geerlingguy.varnish
+<<<<<<< HEAD
   version: 2.1.1
+=======
+  version: 1.9.0
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343

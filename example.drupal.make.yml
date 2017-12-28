@@ -11,13 +11,22 @@ projects:
 
   # Core.
   drupal:
+<<<<<<< HEAD
     version: "8.4.0"
+=======
+    version: "8.2.6"
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
     # Use this if you need a working git repository of Drupal core instead of
     # the latest stable.
     # type: "core"
     # download:
+<<<<<<< HEAD
     #   # Drupal core branch (e.g. "6.x", "7.x", "8.3.x", "8.5.x").
     #   branch: "8.4.x"
+=======
+    #   # Drupal core branch (e.g. "6.x", "7.x", "8.2.x", "8.3.x").
+    #   branch: "8.1.x"
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
     #   working-copy: true
 
   # Other modules.

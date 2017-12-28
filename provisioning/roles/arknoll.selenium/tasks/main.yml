@@ -90,12 +90,28 @@
     owner: root
     group: root
     mode: 0755
+<<<<<<< HEAD
   when: "ansible_service_mgr == 'systemd'"
+=======
+  when: >
+    (ansible_distribution == 'Ubuntu' and ansible_distribution_version.split(".")[0]|int >= 16) or
+    (ansible_distribution == 'Debian' and ansible_distribution_version.split(".")[0]|int >= 8) or
+    (ansible_distribution == 'CentOS' and ansible_distribution_version.split(".")[0]|int >= 7) or
+    (ansible_distribution == 'Fedora')
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
   tags: [configuration, selenium, selenium-install]
 
 - name: Register systemd service status (for systemd systems)
   shell: 'systemctl status selenium | grep "active (running)"'
+<<<<<<< HEAD
   when: "ansible_service_mgr == 'systemd'"
+=======
+  when: >
+    (ansible_distribution == 'Ubuntu' and ansible_distribution_version.split(".")[0]|int >= 16) or
+    (ansible_distribution == 'Debian' and ansible_distribution_version.split(".")[0]|int >= 8) or
+    (ansible_distribution == 'CentOS' and ansible_distribution_version.split(".")[0]|int >= 7) or
+    (ansible_distribution == 'Fedora')
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
   register: selenium_running
   ignore_errors: yes
   changed_when: false

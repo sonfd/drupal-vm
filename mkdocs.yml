@@ -64,13 +64,22 @@ pages:
     - 'Pre- and Post-Provision Scripts': 'extending/scripts.md'
   - Other Information:
     - 'Networking Notes': 'other/networking.md'
+<<<<<<< HEAD
     - 'Vagrant LXC provider': 'other/vagrant-lxc.md'
     - 'Improving Performance': 'other/performance.md'
     - 'Docker': 'other/docker.md'
+=======
+    - 'Vagrant and VirtualBox': 'other/vagrant-virtualbox.md'
+    - 'Vagrant LXC provider': 'other/vagrant-lxc.md'
+    - 'Improving Performance': 'other/performance.md'
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
     - 'BigPipe with Drupal VM': 'other/bigpipe.md'
     - 'Drupal multisite': 'deployment/multisite.md'
     - 'Drupal 6 Notes': 'other/drupal-6.md'
     - 'Drupal VM Management Tools': 'other/management-tools.md'
+<<<<<<< HEAD
     - 'Emulating Acquia Cloud environment': 'other/acquia.md'
+=======
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
     - 'Deploying to a production environment': 'other/production.md'
     - 'Wordpress or other applications': 'other/wordpress-other-applications.md'

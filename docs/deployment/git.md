@@ -4,6 +4,7 @@ This is also the recommended method for deploying Drupal sites to Drupal VM when
 
 ## Deploying Drupal via Git
 
+<<<<<<< HEAD
 Drupal VM uses the [`geerlingguy.drupal`](https://github.com/geerlingguy/ansible-role-drupal) Ansible role to deploy and manage Drupal codebases.
 
 To deploy your Drupal project inside Drupal VM during provisioning, you need to set the following variables inside `config.yml`:
@@ -23,3 +24,6 @@ When you run `vagrant provision` or deploy Drupal VM to a production server, the
 > Note: For private repositories, you can use your own SSH key if you use `ssh-agent`. On Mac or Linux, you can run `ssh-add -K` to add your default private key to the SSH Agent, or on Windows you can either use [Pageant](https://winscp.net/eng/docs/ui_pageant), an SSH agent built into your CLI emulator, or if you're on Windows 10, the SSH Agent that's installed with Ubuntu Bash.
 
 For more information about this technique, please read Jeff Geerling's blog post, [Drupal VM on Windows - a fast container for BLT project development](https://www.jeffgeerling.com/blog/2017/drupal-vm-on-windows-fast-container-blt-project-development). Note that this technique is great for better performance on Windows, but it can be used on any platform where Drupal VM is used.
+=======
+TODO: See https://github.com/geerlingguy/drupal-vm/issues/1258.
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343

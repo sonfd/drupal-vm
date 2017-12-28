@@ -31,6 +31,7 @@ $settings['reverse_proxy_addresses'] = array('127.0.0.1');
 
 If you don't set these values, Drupal will think all requests are coming from `127.0.0.1`. There are other settings you can change to make Drupal not store copies of cached pages in the Database (since Varnish is caching everything, this is redundant), but those other settings are not covered here.
 
+<<<<<<< HEAD
 ## Extending the base `drupalvm.vcl.j2` template
 
 If you can't customize via variables because an option isn't exposed, you can extend the base `drupalvm.vcl.j2` through [Jinja2 template inheritance](http://jinja.pocoo.org/docs/2.9/templates/#template-inheritance).
@@ -61,4 +62,6 @@ unset resp.http.Purge-Cache-Tags;
 
 The [`{{ super() }}` Jinja2 function](http://jinja.pocoo.org/docs/2.9/templates/#super-blocks) returns the original block content from the base template.
 
+=======
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 For a list of available role variables, see the [`geerlingguy.varnish` Ansible role's README](https://github.com/geerlingguy/ansible-role-varnish#readme).

@@ -48,6 +48,7 @@ To use XDebug with NetBeans, change the `php_xdebug_idekey` variable as shown be
 php_xdebug_idekey: netbeans-xdebug
 ```
 
+<<<<<<< HEAD
 ### XDebug over SSH/Drush
 
 As long as `xdebug` is listed in `installed_extras` Drupal VM is configured to accept the `PHP_IDE_CONFIG`, `XDEBUG_CONFIG` and `PHP_OPTIONS` environment variables over SSH and this can be used to set up some IDE's as well as enable XDebug on a per request basis:
@@ -69,6 +70,8 @@ XDEBUG_CONFIG="-d default_enable=1" vagrant ssh -c 'php /var/www/drupalvm/drupal
 XDEBUG_CONFIG="-d default_enable=1" vagrant ssh -c 'cd /var/www/drupalvm/drupal/web/core; php ../../vendor/bin/phpunit tests/Drupal/Tests/Core/Password/PasswordHashingTest.php'
 ```
 
+=======
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 ## Profiling code with XDebug
 
 While most people use XDebug only for debugging purposes, you can also use it for profiling. It's not as commonly used for profiling as either Blackfire or XHProf, but it works!

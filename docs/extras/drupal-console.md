@@ -35,7 +35,11 @@ Execute from host machine using the `--target` option.
 
     drupal --target=drupalvm.test site:status
 
+<<<<<<< HEAD
 For more details, see [Drupal Console's documentation](https://docs.drupalconsole.com/en/alias/how-to-use-drupal-console-in-a-remote-installation.html)
+=======
+For more details, see [Drupal Console's documentation](https://hechoendrupal.gitbooks.io/drupal-console/content/en/using/how-to-use-drupal-console-in-a-remote-installation.html)
+>>>>>>> dd747fad95dbf3b776a00731ba9641b7f5e76343
 
 For a list of available role variables, see the [`geerlingguy.drupal-console` Ansible role's README](https://github.com/geerlingguy/ansible-role-drupal-console#readme).
 
