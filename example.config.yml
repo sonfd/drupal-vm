@@ -32,7 +32,7 @@ vagrant_synced_folders:
   - local_path: ../
     destination: /var/www/
     type: nfs
-    create: true
+    create: false
 
 # Ensure vagrant plugins are installed.
 vagrant_plugins:
