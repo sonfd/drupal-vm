@@ -14,15 +14,15 @@ php_memory_limit: "192M"
 drupal_core_path: "/var/www/docroot"
 
 # Database settings.
-drupal_db_user: {{ project_name }}
-drupal_db_password: {{ project_name }}
-drupal_db_name: {{ project name }}
+drupal_db_user: "{{ project_name }}"
+drupal_db_password: "{{ project_name }}"
+drupal_db_name: "{{ project_name }}"
 drupal_db_host: localhost
 
 # If you need to run multiple instances of Drupal VM, set a unique hostname,
 # machine name, and IP address for each instance.
 vagrant_hostname: "{{ project_name }}.test"
-vagrant_machine_name: {{ project_name }}
+vagrant_machine_name: "{{ project_name }}"
 vagrant_ip: 0.0.0.0
 
 # A list of synced folders, with the keys 'local_path', 'destination', and
