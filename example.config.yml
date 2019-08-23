@@ -32,7 +32,7 @@ vagrant_synced_folders:
   - local_path: ../
     destination: /var/www/
     type: nfs
-    create: false
+    create: true
 
 # Ensure vagrant plugins are installed.
 vagrant_plugins:
@@ -102,7 +102,6 @@ drupal_composer_project_options: "--prefer-dist --stability dev --no-interaction
 drupal_install_site: false
 
 # Required Drupal settings.
-drupal_core_path: "{{ drupal_composer_install_dir }}/docroot"
 drupal_core_owner: "{{ drupalvm_user }}"
 
 # Settings for installing a Drupal site if 'drupal_install_site:' is 'true'.
@@ -322,7 +321,7 @@ docker_image_name: drupal-vm
 docker_image_path: ~/Downloads
 
 # Other configuration.
-dashboard_install_dir: /var/www/dashboard
+dashboard_install_dir: ''
 known_hosts_path: ~/.ssh/known_hosts
 hostname_configure: true
 hostname_fqdn: "{{ vagrant_hostname }}"
