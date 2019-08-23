@@ -64,6 +64,8 @@ installed_extras:
   - xdebug
   # - xhprof # use `tideways` if you're installing PHP 7+
 
+ssh_home: "/var/www"
+
 # Minimum required versions.
 drupalvm_vagrant_version_min: '1.8.6'
 drupalvm_ansible_version_min: '2.4'
@@ -142,10 +144,6 @@ apache_vhosts:
   - servername: "{{ drupal_domain }}"
     serveralias: "www.{{ drupal_domain }}"
     documentroot: "{{ drupal_core_path }}"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-
-  - servername: "xhprof.{{ vagrant_hostname }}"
-    documentroot: "{{ php_xhprof_html_dir }}"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
   - servername: "pimpmylog.{{ vagrant_hostname }}"
@@ -325,4 +323,3 @@ dashboard_install_dir: ''
 known_hosts_path: ~/.ssh/known_hosts
 hostname_configure: true
 hostname_fqdn: "{{ vagrant_hostname }}"
-ssh_home: "{{ drupal_core_path }}"
