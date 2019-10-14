@@ -1,38 +1,60 @@
 ---
-# Project Name
-project_name: ""
+### INSTRUCTIONS ---------------------------------------------------------------
+# - 1. Add entry for project in vagrant_synced_folders.
+# - 2. Add entry for project in apache_vhosts.
+# - 3. Add entry for project in mysql_databases.
+### ----------------------------------------------------------------------------
 
-# Memory and CPU to use for this VM.
-vagrant_memory: 2048
-vagrant_cpus: 1
+### SYNCED FOLDERS -------------------------------------------------------------
+vagrant_synced_folders:
+#-- Projects
+  - local_path: /Users/sonfd/workspace/CLIENT/PROJECT
+    destination: /var/www/CLIENT/PROJECT
+    type: nfs
+    create: true
+
+### APACHE ---------------------------------------------------------------------
+apache_vhosts:
+  - servername: "pimpmylog.{{ vagrant_hostname }}"
+    documentroot: "{{ pimpmylog_install_dir }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+#-- Projects
+  - servername: "PROJECT.test"
+    serveralias: "www.PROJECT.test"
+    documentroot: "/var/www/CLIENT/PROJECT/docroot"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+### MYSQL ----------------------------------------------------------------------
+mysql_databases:
+  - name: "PROJECT"
+    encoding: utf8mb4
+    collation: utf8mb4_general_ci
+
+### ----------------------------------------------------------------------------
+### BOX CONFIGURATION ----------------------------------------------------------
+box_name: "dvm-72"
 
 # PHP Settings.
 php_version: "7.2"
 php_memory_limit: "192M"
 
-# Drupal docroot.
-drupal_core_path: "/var/www/docroot"
+# Memory and CPU to use for this VM.
+vagrant_memory: 2048
+vagrant_cpus: 2
 
 # Database settings.
-drupal_db_user: "{{ project_name }}"
-drupal_db_password: "{{ project_name }}"
-drupal_db_name: "{{ project_name }}"
-drupal_db_host: localhost
+mysql_users:
+  - name: "dvm"
+    host: "%"
+    password: "dvm"
+    priv: "*.*:ALL"
 
 # If you need to run multiple instances of Drupal VM, set a unique hostname,
 # machine name, and IP address for each instance.
-vagrant_hostname: "{{ project_name }}.test"
-vagrant_machine_name: "{{ project_name }}"
+vagrant_hostname: "{{ box_name }}"
+vagrant_machine_name: "{{ box_name }}"
 vagrant_ip: 0.0.0.0
-
-# A list of synced folders, with the keys 'local_path', 'destination', and
-# a 'type' of [nfs|rsync|smb] (leave empty for slow native shares). See
-# http://docs.drupalvm.com/en/latest/getting-started/syncing-folders/ for more.
-vagrant_synced_folders:
-  - local_path: ../
-    destination: /var/www/
-    type: nfs
-    create: true
+ssh_home: "/var/www"
 
 # Ensure vagrant plugins are installed.
 vagrant_plugins:
@@ -63,8 +85,6 @@ installed_extras:
   - varnish
   - xdebug
   # - xhprof # use `tideways` if you're installing PHP 7+
-
-ssh_home: "/var/www"
 
 # Minimum required versions.
 drupalvm_vagrant_version_min: '1.8.6'
@@ -137,19 +157,6 @@ apache_vhost_php_fpm_parameters: |
       SetHandler "proxy:fcgi://{{ php_fpm_listen }}"
     </FilesMatch>
 
-# Apache VirtualHosts. Add one for each site you are running inside the VM. For
-# multisite deployments, you can point multiple servernames at one documentroot.
-# View the geerlingguy.apache Ansible Role README for more options.
-apache_vhosts:
-  - servername: "{{ drupal_domain }}"
-    serveralias: "www.{{ drupal_domain }}"
-    documentroot: "{{ drupal_core_path }}"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-
-  - servername: "pimpmylog.{{ vagrant_hostname }}"
-    documentroot: "{{ pimpmylog_install_dir }}"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-
 apache_packages_state: latest
 apache_remove_default_vhost: true
 apache_mods_enabled:
@@ -159,56 +166,6 @@ apache_mods_enabled:
   - rewrite.load
   - proxy.load
   - proxy_fcgi.load
-
-# Nginx hosts. Each site will get a server entry using the configuration defined
-# here. Set the 'is_php' property for document roots that contain PHP apps like
-# Drupal.
-nginx_hosts:
-  - server_name: "{{ drupal_domain }} www.{{ drupal_domain }}"
-    root: "{{ drupal_core_path }}"
-    is_php: true
-
-  - server_name: "adminer.{{ vagrant_hostname }}"
-    root: "{{ adminer_install_dir }}"
-    is_php: true
-
-  - server_name: "xhprof.{{ vagrant_hostname }}"
-    root: "{{ php_xhprof_html_dir }}"
-    is_php: true
-
-  - server_name: "pimpmylog.{{ vagrant_hostname }}"
-    root: "{{ pimpmylog_install_dir }}"
-    is_php: true
-
-  - server_name: "{{ vagrant_ip }} dashboard.{{ vagrant_hostname }}"
-    root: "{{ dashboard_install_dir }}"
-    is_php: true
-
-nginx_remove_default_vhost: true
-nginx_ppa_use: true
-nginx_vhost_template: "templates/nginx-vhost.conf.j2"
-
-# MySQL databases and users.
-mysql_databases:
-  - name: "{{ drupal_db_name }}"
-    encoding: utf8mb4
-    collation: utf8mb4_general_ci
-
-mysql_users:
-  - name: "{{ drupal_db_user }}"
-    host: "%"
-    password: "{{ drupal_db_password }}"
-    priv: "{{ drupal_db_name }}.*:ALL"
-
-# PostgreSQL databases and users.
-postgresql_databases:
-  - name: "{{ drupal_db_name }}"
-
-postgresql_users:
-  - name: "{{ drupal_db_user }}"
-    password: "{{ drupal_db_password }}"
-    db: "{{ drupal_db_name }}"
-    priv: "ALL"
 
 # Add any extra apt or yum packages you would like installed.
 extra_packages:
