@@ -1,5 +1,5 @@
 ---
-### INSTRUCTIONS ---------------------------------------------------------------
+### PROJECT INSTRUCTIONS -------------------------------------------------------
 # - 1. Add entry for project in vagrant_synced_folders.
 # - 2. Add entry for project in apache_vhosts.
 # - 3. Add entry for project in mysql_databases.
@@ -32,6 +32,12 @@ mysql_databases:
 
 ### ----------------------------------------------------------------------------
 ### BOX CONFIGURATION ----------------------------------------------------------
+### ----------------------------------------------------------------------------
+### INSTRUCTIONS ---------------------------------------------------------------
+# - 1. Set box_name, box_name should match instance's folder in ~/workspace/vms.
+# - 2. Set php_version, php_version should match box name.
+# - 3. Copy depstep and resetdb to box. Add to path.
+### ----------------------------------------------------------------------------
 box_name: "dvm-72"
 
 # PHP Settings.
