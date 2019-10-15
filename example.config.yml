@@ -7,28 +7,32 @@
 
 ### SYNCED FOLDERS -------------------------------------------------------------
 vagrant_synced_folders:
-#-- Projects
-  - local_path: /Users/sonfd/workspace/CLIENT/PROJECT
-    destination: /var/www/CLIENT/PROJECT
+  - local_path: /Users/sonfd/workspace/bin
+    destination: /var/bin
     type: nfs
     create: true
+#-- PROJECT
+  # - local_path: /Users/sonfd/workspace/CLIENT/PROJECT
+  #   destination: /var/www/CLIENT/PROJECT
+  #   type: nfs
+  #   create: true
 
 ### APACHE ---------------------------------------------------------------------
 apache_vhosts:
   - servername: "pimpmylog.{{ vagrant_hostname }}"
     documentroot: "{{ pimpmylog_install_dir }}"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-#-- Projects
-  - servername: "PROJECT.test"
-    serveralias: "www.PROJECT.test"
-    documentroot: "/var/www/CLIENT/PROJECT/docroot"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+#-- PROJECT
+  # - servername: "PROJECT.test"
+  #   serveralias: "www.PROJECT.test"
+  #   documentroot: "/var/www/CLIENT/PROJECT/docroot"
+  #   extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
 ### MYSQL ----------------------------------------------------------------------
-mysql_databases:
-  - name: "PROJECT"
-    encoding: utf8mb4
-    collation: utf8mb4_general_ci
+mysql_databases: []
+  # - name: "PROJECT"
+  #   encoding: utf8mb4
+  #   collation: utf8mb4_general_ci
 
 ### ----------------------------------------------------------------------------
 ### BOX CONFIGURATION ----------------------------------------------------------
@@ -226,8 +230,8 @@ composer_global_packages:
 # to reference the provisioning/ folder in Drupal VM or {{ config_dir }} to
 # reference the directory where your `config.yml` is.
 pre_provision_scripts: []
-post_provision_scripts: []
-  # - "{{ playbook_dir }}/../examples/scripts/configure-solr.sh"
+post_provision_scripts:
+  - "{{ playbook_dir }}/tasks/post-provision-dvm.sh"
 
 # MySQL Configuration.
 mysql_root_password: root
