@@ -50,7 +50,7 @@ php_memory_limit: "192M"
 
 # Memory and CPU to use for this VM.
 vagrant_memory: 2048
-vagrant_cpus: 2
+vagrant_cpus: 1
 
 # Database settings.
 mysql_users:
