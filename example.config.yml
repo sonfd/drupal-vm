@@ -7,7 +7,7 @@
 
 ### SYNCED FOLDERS -------------------------------------------------------------
 vagrant_synced_folders:
-  - local_path: /Users/sonfd/workspace/bin
+  - local_path: /Users/sonfd/workspace/sonfd/bin
     destination: /var/bin
     type: nfs
     create: true
@@ -30,6 +30,7 @@ apache_vhosts:
 
 ### MYSQL ----------------------------------------------------------------------
 mysql_databases: []
+#-- PROJECT
   # - name: "PROJECT"
   #   encoding: utf8mb4
   #   collation: utf8mb4_general_ci
